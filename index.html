@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>STT</title>
+    <title>Transcription</title>
+    <link rel="shortcut icon" href="./src/assets/favicon.ico" />
     <meta charset="utf-8" />
-    <!-- <script src="src/scripts/app.js"></script> -->
-    <!-- <script src="src/scripts/audioVisualizer.js"></script> -->
-    <!-- <script src="src/scripts/visualizer.js"></script> -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A web application to showcase speech transcription using Azure Speech">
+    <meta name="author" content="Hexaware Innovation Lab (R&D)">
+    <script src="src/scripts/app.js"></script>
+    <!--script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap v4.1.3 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
@@ -17,6 +21,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h"
         crossorigin="anonymous">
+
 </head>
 
 <body class="container-fluid" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
@@ -24,10 +29,11 @@
         <div class="row panel panel-default">
             <div class="hide jumbotron col panel-body top-btn">
                 <input id="key" class="text_box" type="text" size="40" placeholder="Put Key ..."
-                    value="5e98bde5b86f4f09bb4ab9db2535d610">
+                    value="dffe370190ab42d3ab8fd78a4a7f8e58">
             </div>
             <div class="hide jumbotron col panel-body top-btn">
-                <textarea id="statusDiv" class="eventarea-style text_box transparent"></textarea>
+                <textarea disabled id="statusDiv" class="eventarea-style text_box transparent">
+                </textarea>
             </div>
             <div class="jumbotron col panel-body top-btn">
                 <div class="row">
@@ -43,8 +49,9 @@
             </div>
         </div>
         <div class="row panel panel-default">
-            <div class="jumbotron col panel-body">
-                <textarea id="phraseDiv" class="textarea-style text_box transparent"></textarea>
+            <div class="jumbotron col panel-body"-->
+                <textarea disabled id="phraseDiv" class="textarea-style text_box transparent jumbotron col panel-body">
+                </textarea>
             </div>
         </div>
         <div class="row panel panel-default">
@@ -74,7 +81,7 @@
                                             </g>
                                         </svg>
                                     </div>
-                                </div>
+                                    </div>
                             </div>
                         </button>
                     </div>
@@ -132,7 +139,10 @@
                 onComplete(window.SpeechSDK);
             }
         }
+        
     </script>
+    
+
 
     <!-- Browser Hooks -->
     <script>
@@ -197,14 +207,14 @@
                     // speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken,
                     //     regionOptions.value);
                     speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken,
-                        "westus");
+                        "southeastasia");
                 } else {
                     if (key.value === "" || key.value === "5e98bde5b86f4f09bb4ab9db2535d61") {
                         alert("Please enter your Cognitive Services Speech subscription key!");
                         return;
                     }
                     // speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key.value, regionOptions.value);
-                    speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key.value, "westus");
+                    speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key.value, "southeastasia");
                 }
 
                 // speechConfig.speechRecognitionLanguage = languageOptions.value;
@@ -339,8 +349,17 @@
                 }
             });
         });
-    </script>
 
+        
+    </script>
+        
+        <script>             
+        var textarea = document.getElementById('phraseDiv');
+setInterval(function(){
+    // textarea.value+=Math.random()+'\n';
+    textarea.scrollTop = textarea.scrollHeight;
+}, 1000);
+        </script>
     <!-- Bootstrap v4.1.3 -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -348,6 +367,8 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+    
 
     <script>
         setTimeout(() => {
