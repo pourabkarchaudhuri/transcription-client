@@ -1,3 +1,5 @@
+New Stable Build on master merged from tejas_branch. Branch deleted after merge. Take new branch. 
+
 # Updates
 
 1. Added favicon
