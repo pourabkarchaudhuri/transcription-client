@@ -138,9 +138,9 @@
     <script>
         // On document load resolve the Speech SDK dependency
         function Initialize(onComplete) {
-            if (!!window.SpeechSDK) {
+            if (!window.SpeechSDK) {
                 document.getElementById('content').style.display = 'block';
-                // document.getElementById('warning').style.display = 'none';
+                document.getElementById('warning').style.display = 'none';
                 onComplete(window.SpeechSDK);
             }
         }
