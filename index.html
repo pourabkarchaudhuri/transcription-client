@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h"
         crossorigin="anonymous">
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             handshake();
         });
     </script>
@@ -31,10 +31,9 @@
 
 <body class="container-fluid" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
     <div class="container-fluid" id="content">
-        <div class="row panel panel-default">
+        <!-- <div class="row panel panel-default">
             <div class="hide jumbotron col panel-body top-btn">
-                <input id="key" class="text_box" type="text" size="40" placeholder="Put Key ..."
-                    value="dffe370190ab42d3ab8fd78a4a7f8e58">
+                <input id="key" class="text_box" type="text" size="40" placeholder="Put Key ..." value="dffe370190ab42d3ab8fd78a4a7f8e58">
             </div>
             <div class="hide jumbotron col panel-body top-btn">
                 <textarea disabled id="statusDiv" class="eventarea-style text_box transparent">
@@ -43,8 +42,8 @@
             <div class="jumbotron col panel-body top-btn">
                 <div class="row">
                     <div class="col new-btn-circle">
-                        <!-- <button id="speechsdkStartContinuousRecognition" type="button" class="btn btn-info btn-circle"><i
-                            class="fa fa-check"></i></button> -->
+                        <button id="speechsdkStartContinuousRecognition" type="button" class="btn btn-info btn-circle"><i
+                            class="fa fa-check"></i></button>
                     </div>
                     <div class="col new-btn-circle">
                         <button id="speechsdkStopContinuousRecognition" type="button" class="btn btn-danger btn-circle"
@@ -52,15 +51,15 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row panel panel-default">
-            <div class="jumbotron col panel-body"-->
+            <div class="jumbotron col panel-body" -->
                 <textarea disabled id="phraseDiv" class="textarea-style text_box transparent jumbotron col panel-body">
                 </textarea>
             </div>
         </div>
         <div class="row panel panel-default">
-            <div class="jumbotron col panel-body">
+            <div class="jumbotron col panel-body sp-content">
                 <main>
                     <!-- <button onclick="init()">start</button> -->
                 </main>
@@ -69,28 +68,41 @@
         <div class="row panel panel-default">
             <div class="jumbotron col panel-body">
                 <!-- Pulsing Mic Button -->
-                <div class="row">
-                    <div class="col mic-container">
-                        <button type="button" class="new-btn" id="speechsdkStartContinuousRecognition">
-                            <div class="box">
-                                <div class="object">
-                                    <div class="outline"></div>
-                                    <div class="outline" id="delayed"></div>
-                                    <div class="button"></div>
-                                    <div class="button" id="circlein">
-                                        <svg class="mic-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                            x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000"
-                                            xml:space="preserve" style="fill:#1E2D70">
-                                            <g>
-                                                <path d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z" />
-                                            </g>
-                                        </svg>
+                <!-- <div class="row"> -->
+                    <!-- <div class="col mic-container"> -->
+                        <span class="mic-container">
+                            <button type="button" class="new-btn" id="speechsdkStartContinuousRecognition">
+                                <div class="box">
+                                    <div class="object">
+                                        <div class="button-danger"></div>
+                                        <div class="button" id="circlein-danger">
+                                            <!-- <svg class="mic-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000"
+                                                xml:space="preserve" style="fill:#1E2D70">
+                                                <g>
+                                                    <path d="M500,683.8c84.6,0,153.1-68.6,153.1-153.1V163.1C653.1,78.6,584.6,10,500,10c-84.6,0-153.1,68.6-153.1,153.1v367.5C346.9,615.2,415.4,683.8,500,683.8z M714.4,438.8v91.9C714.4,649,618.4,745,500,745c-118.4,0-214.4-96-214.4-214.4v-91.9h-61.3v91.9c0,141.9,107.2,258.7,245,273.9v124.2H346.9V990h306.3v-61.3H530.6V804.5c137.8-15.2,245-132.1,245-273.9v-91.9H714.4z" />
+                                                </g>
+                                            </svg> -->
+                                            <i class="center fa fa-microphone-slash fa-4x"></i>
+                                        </div>
                                     </div>
+                                </div>
+                            </button>
+                            <button type="button" class="new-btn" id="speechsdkStopContinuousRecognition" disabled>
+                                <div class="box">
+                                    <div class="object">
+                                        <div class="outline"></div>
+                                        <div class="outline" id="delayed"></div>
+                                        <div class="button"></div>
+                                        <div class="button" id="circlein">
+                                            <i class="center fa fa-microphone fa-4x"></i>
+                                        </div>
                                     </div>
-                            </div>
-                        </button>
-                    </div>
-                </div>
+                                </div>
+                            </button>
+                        </span>
+                    <!-- </div> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>
@@ -144,9 +156,9 @@
                 onComplete(window.SpeechSDK);
             }
         }
-        
+
     </script>
-    
+
 
 
     <!-- Browser Hooks -->
@@ -185,8 +197,10 @@
             sdkIntentStopRecognizeOnceAsyncBtn = document.getElementById(
                 "speechsdkIntentStopRecognizeOnceAsync");
             phraseDiv = document.getElementById("phraseDiv");
-            statusDiv = document.getElementById("statusDiv");
-            key = document.getElementById("key");
+            // statusDiv = document.getElementById("statusDiv");
+            // key = document.getElementById("key");
+            key = document.createElement;
+            key.value = "dffe370190ab42d3ab8fd78a4a7f8e58";
             // appId = document.getElementById("appId");
             // languageOptions = document.getElementById("languageOptions");
             languageTargetOptions = document.getElementById("languageTargetOptions");
@@ -199,7 +213,7 @@
             // Starts continuous voice recognition. Recognition will continue until there is ~20 seconds of silence or ~10 minutes of speech.
             sdkStartContinousRecognitionBtn.addEventListener("click", function () {
                 phraseDiv.innerHTML = "";
-                statusDiv.innerHTML = "";
+                // statusDiv.innerHTML = "";
                 var lastRecognized = "";
 
                 // If an audio file was specified, use it. Else use the microphone.
@@ -219,7 +233,8 @@
                         return;
                     }
                     // speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key.value, regionOptions.value);
-                    speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key.value, "southeastasia");
+                    // speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key.value, "southeastasia");
+                    speechConfig = SpeechSDK.SpeechConfig.fromSubscription("dffe370190ab42d3ab8fd78a4a7f8e58", "southeastasia");
                 }
 
                 // speechConfig.speechRecognitionLanguage = languageOptions.value;
@@ -233,8 +248,8 @@
                 // more recognized speech. The event will contain the text for the recognition since the last phrase was recognized.
                 reco.recognizing = function (s, e) {
                     window.console.log(e);
-                    statusDiv.innerHTML += "(recognizing) Reason: " + SpeechSDK.ResultReason[e.result
-                        .reason] + " Text: " + e.result.text + "\r\n";
+                    // statusDiv.innerHTML += "(recognizing) Reason: " + SpeechSDK.ResultReason[e.result
+                    //     .reason] + " Text: " + e.result.text + "\r\n";
                     phraseDiv.innerHTML = lastRecognized + e.result.text;
                     window.console.log(e.result.text)
                     //AJAX call
@@ -250,12 +265,12 @@
                     // Indicates that recognizable speech was not detected, and that recognition is done.
                     if (e.result.reason === SpeechSDK.ResultReason.NoMatch) {
                         var noMatchDetail = SpeechSDK.NoMatchDetails.fromResult(e.result);
-                        statusDiv.innerHTML += "(recognized)  Reason: " + SpeechSDK.ResultReason[e.result
-                            .reason] + " NoMatchReason: " + SpeechSDK.NoMatchReason[
-                            noMatchDetail.reason] + "\r\n";
+                        // statusDiv.innerHTML += "(recognized)  Reason: " + SpeechSDK.ResultReason[e.result
+                        //     .reason] + " NoMatchReason: " + SpeechSDK.NoMatchReason[
+                        //     noMatchDetail.reason] + "\r\n";
                     } else {
-                        statusDiv.innerHTML += "(recognized)  Reason: " + SpeechSDK.ResultReason[e.result
-                            .reason] + " Text: " + e.result.text + "\r\n";
+                        // statusDiv.innerHTML += "(recognized)  Reason: " + SpeechSDK.ResultReason[e.result
+                        //     .reason] + " Text: " + e.result.text + "\r\n";
                         window.console.log(e.result.text)
                     }
 
@@ -274,23 +289,23 @@
                 reco.canceled = function (s, e) {
                     window.console.log(e);
 
-                    statusDiv.innerHTML += "(cancel) Reason: " + SpeechSDK.CancellationReason[e.reason];
-                    if (e.reason === SpeechSDK.CancellationReason.Error) {
-                        statusDiv.innerHTML += ": " + e.errorDetails;
-                    }
-                    statusDiv.innerHTML += "\r\n";
+                    // statusDiv.innerHTML += "(cancel) Reason: " + SpeechSDK.CancellationReason[e.reason];
+                    // if (e.reason === SpeechSDK.CancellationReason.Error) {
+                    //     statusDiv.innerHTML += ": " + e.errorDetails;
+                    // }
+                    // statusDiv.innerHTML += "\r\n";
                 };
 
                 // Signals that a new session has started with the speech service
                 reco.sessionStarted = function (s, e) {
                     window.console.log(e);
-                    statusDiv.innerHTML += "(sessionStarted) SessionId: " + e.sessionId + "\r\n";
+                    // statusDiv.innerHTML += "(sessionStarted) SessionId: " + e.sessionId + "\r\n";
                 };
 
                 // Signals the end of a session with the speech service.
                 reco.sessionStopped = function (s, e) {
                     window.console.log(e);
-                    statusDiv.innerHTML += "(sessionStopped) SessionId: " + e.sessionId + "\r\n";
+                    // statusDiv.innerHTML += "(sessionStopped) SessionId: " + e.sessionId + "\r\n";
                     sdkStartContinousRecognitionBtn.disabled = false;
                     sdkStopContinousRecognitionBtn.disabled = true;
                 };
@@ -298,21 +313,23 @@
                 // Signals that the speech service has started to detect speech.
                 reco.speechStartDetected = function (s, e) {
                     window.console.log(e);
-                    statusDiv.innerHTML += "(speechStartDetected) SessionId: " + e.sessionId +
-                        "\r\n";
+                    // statusDiv.innerHTML += "(speechStartDetected) SessionId: " + e.sessionId +
+                    //     "\r\n";
                 };
 
                 // Signals that the speech service has detected that speech has stopped.
                 reco.speechEndDetected = function (s, e) {
                     window.console.log(e);
-                    statusDiv.innerHTML += "(speechEndDetected) SessionId: " + e.sessionId + "\r\n";
+                    // statusDiv.innerHTML += "(speechEndDetected) SessionId: " + e.sessionId + "\r\n";
                 };
 
                 // Starts recognition
                 reco.startContinuousRecognitionAsync();
 
                 sdkStartContinousRecognitionBtn.disabled = true;
+                sdkStartContinousRecognitionBtn.style.visibility = "hidden";
                 sdkStopContinousRecognitionBtn.disabled = false;
+                sdkStopContinousRecognitionBtn.style.visibility = "visible";
             });
 
             // Stops recognition and disposes of resources.
@@ -328,20 +345,22 @@
                     });
 
                 sdkStartContinousRecognitionBtn.disabled = false;
+                sdkStartContinousRecognitionBtn.style.visibility = "visible";
                 sdkStopContinousRecognitionBtn.disabled = true;
+                sdkStopContinousRecognitionBtn.style.visibility = "hidden";
             });
 
-            key.addEventListener("focus", function () {
-                if (key.value === "5e98bde5b86f4f09bb4ab9db2535d610") {
-                    key.value = "";
-                }
-            });
+            // key.addEventListener("focus", function () {
+            //     if (key.value === "5e98bde5b86f4f09bb4ab9db2535d610") {
+            //         key.value = "";
+            //     }
+            // });
 
-            key.addEventListener("focusout", function () {
-                if (key.value === "") {
-                    key.value = "5e98bde5b86f4f09bb4ab9db2535d610";
-                }
-            });
+            // key.addEventListener("focusout", function () {
+            //     if (key.value === "") {
+            //         key.value = "5e98bde5b86f4f09bb4ab9db2535d610";
+            //     }
+            // });
 
             Initialize(function (speechSdk) {
                 SpeechSDK = speechSdk;
@@ -355,16 +374,16 @@
             });
         });
 
-        
+
     </script>
-        
-        <script>             
+
+    <script>
         var textarea = document.getElementById('phraseDiv');
-setInterval(function(){
-    // textarea.value+=Math.random()+'\n';
-    textarea.scrollTop = textarea.scrollHeight;
-}, 1000);
-        </script>
+        setInterval(function () {
+            // textarea.value+=Math.random()+'\n';
+            textarea.scrollTop = textarea.scrollHeight;
+        }, 1000);
+    </script>
     <!-- Bootstrap v4.1.3 -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -373,7 +392,7 @@ setInterval(function(){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-    
+
 
     <script>
         setTimeout(() => {
