@@ -13,7 +13,6 @@ body {
   margin: 1%;
   text-align: center;
   background-color: #222033;
-  margin-bottom: 0px;
 }
 
 .text_box {
@@ -120,7 +119,9 @@ textarea {
 
 /* . */
 body {
-	background: #222032;
+  background: #222032;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .box {
@@ -157,6 +158,15 @@ body {
 	position: absolute;
 }
 
+.button-danger {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	background: #D9534F;
+	box-shadow: 0px 0px 80px rgb(249, 0, 0);
+	position: absolute;
+}
+
 @keyframes pulse {
   0% {
     transform: scale(0);
@@ -190,6 +200,15 @@ body {
   border-radius: 50%;
   background: #6BD6E1;
   box-shadow: 0px -2px 15px #E0FF94;
+  position: relative;
+}
+
+#circlein-danger {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #D9534F;
+  box-shadow: 0px -2px 15px rgb(255, 255, 255);
   position: relative;
 }
 
@@ -271,9 +290,6 @@ main.error {
 .col {
   position: relative;
   width: 100%;
-  min-height: 65px;
-  padding-right: 15px;
-  padding-left: 15px;
 }
 
 .top-btn {
@@ -301,9 +317,75 @@ main.error {
 
 .new-btn, button:hover {
   box-shadow: none;
+  outline: none;
 }
 
 .mic-container {
   position: relative;
   min-height: 111px;
+}
+
+.sp-content {
+  border: 0;
+  margin: 0;
+}
+
+span {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-42%, -50%);
+}
+
+.center {
+  margin-left: auto;
+  margin-top: 20%;
+}
+
+#speechsdkStopContinuousRecognition {
+  visibility: hidden;
+}
+
+#audio_visual {
+  visibility: hidden;
+}
+
+/* Status Message Box */
+.status-panel {
+  background-color: #22203400;
+  display: inline-block;
+  width: 200px;
+  height: 30px;
+  border-style: solid;
+  border: 2px solid white;
+  margin-top: 5px;
+  border-radius: 15px;
+  padding: 3px 10px;
+}
+
+.status-dot {
+  position: absolute;
+  background-color: #D9534F;
+  display: inline-block;
+  width: 15px;
+  height: 16px;
+  margin: 2px 15px 0px 0px;
+  border-radius: 50%;
+}
+
+strong {
+  margin: 0px 10px 0px 0px;
+}
+
+.fixed-row-bottom {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
 }
