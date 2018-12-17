@@ -8,7 +8,10 @@ function handshake() {
 
 function call(val){
     window.console.log("Calling backend with :::::" + val)  
-    
+    console.log('check 1', socket.connected);
+        socket.on('connect', function() {
+        console.log('check 2', socket.connected);
+        });
     socket.emit('chat', {
         message: val,
         handle: "transcriber"
