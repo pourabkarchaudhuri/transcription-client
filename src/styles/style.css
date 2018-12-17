@@ -341,7 +341,7 @@ button {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-42%, -50%);
 }
 
 .center {
@@ -357,11 +357,11 @@ button {
   visibility: hidden;
 }
 
-/* alert box */
+/* Status Message Box */
 .status-panel {
   background-color: #22203400;
   display: inline-block;
-  width: 12%;
+  width: 200px;
   height: 30px;
   border-style: solid;
   border: 2px solid white;
@@ -382,4 +382,10 @@ button {
 
 strong {
   margin: 0px 10px 0px 0px;
+}
+
+.fixed-row-bottom {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
 }
