@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="A web application to showcase speech transcription using Azure Speech">
     <meta name="author" content="Hexaware Innovation Lab (R&D)">
-    <script src="src/scripts/app.js"></script>
-    <!--script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script-->
+    <!-- <script src="src/scripts/jquery-3.3.1.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Bootstrap v4.1.3 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -21,15 +21,19 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h"
         crossorigin="anonymous">
+        <script src="src/scripts/app.js"></script>
     <script>
         $(document).ready(function () {
+            getConfig();
             handshake();
         });
     </script>
-
 </head>
 
 <body class="container-fluid" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px;">
+    <div align="right">
+        <div id="status-msg" class="status-panel" align="center"><strong>DISCONNECTED</strong><div id="status-msg-dot" class="status-dot" align="right"></div></div>
+    </div>
     <div class="container-fluid" id="content">
         <div class="row panel panel-default">
             <div class="jumbotron col panel-body" -->
@@ -39,16 +43,16 @@
         </div>
         <div class="row panel panel-default">
             <div class="jumbotron col panel-body sp-content">
-                <main>
+                <main id="audio_visual">
                     <!-- <button onclick="init()">start</button> -->
                 </main>
             </div>
         </div>
         <div class="row panel panel-default">
             <div class="jumbotron col panel-body">
-                <!-- Pulsing Mic Button -->
+                <!-- Non-Pulsing Microphone-off Button -->
                 <span class="mic-container">
-                    <button type="button" class="new-btn" id="speechsdkStartContinuousRecognition">
+                    <button type="button" class="new-btn" onclick="InitAudioVisual()" id="speechsdkStartContinuousRecognition">
                         <div class="box">
                             <div class="object">
                                 <div class="button-danger"></div>
@@ -65,7 +69,8 @@
                             </div>
                         </div>
                     </button>
-                    <button type="button" class="new-btn" id="speechsdkStopContinuousRecognition" disabled>
+                    <!-- Pulsing Microphone Button -->
+                    <button type="button" class="new-btn" onclick="RemoveAudioVisual()" id="speechsdkStopContinuousRecognition" disabled>
                         <div class="box">
                             <div class="object">
                                 <div class="outline"></div>
@@ -127,6 +132,21 @@
                 document.getElementById('warning').style.display = 'none';
                 onComplete(window.SpeechSDK);
             }
+        }
+    </script>
+
+    <script>
+        function InitAudioVisual() {
+            document.getElementById("audio_visual").style.visibility = "visible";
+            setTimeout(() => {
+                init();
+            }, 1000);
+        }
+    </script>
+
+    <script>
+        function RemoveAudioVisual() {
+            document.getElementById("audio_visual").style.visibility = "hidden";
         }
     </script>
 
@@ -295,18 +315,18 @@
         }, 1000);
     </script>
     <!-- Bootstrap v4.1.3 -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <!-- Initialize the Audio Visualizer Animation -->
-    <script>
+    <!-- <script>
         setTimeout(() => {
             init();
         }, 1000);   
-    </script>
+    </script> -->
 </body>
 
 </html>

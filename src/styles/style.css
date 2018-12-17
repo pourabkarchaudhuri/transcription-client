@@ -317,6 +317,7 @@ main.error {
 
 .new-btn, button:hover {
   box-shadow: none;
+  outline: none;
 }
 
 .mic-container {
@@ -350,4 +351,35 @@ button {
 
 #speechsdkStopContinuousRecognition {
   visibility: hidden;
+}
+
+#audio_visual {
+  visibility: hidden;
+}
+
+/* alert box */
+.status-panel {
+  background-color: #22203400;
+  display: inline-block;
+  width: 12%;
+  height: 30px;
+  border-style: solid;
+  border: 2px solid white;
+  margin-top: 5px;
+  border-radius: 15px;
+  padding: 3px 10px;
+}
+
+.status-dot {
+  position: absolute;
+  background-color: #D9534F;
+  display: inline-block;
+  width: 15px;
+  height: 16px;
+  margin: 2px 15px 0px 0px;
+  border-radius: 50%;
+}
+
+strong {
+  margin: 0px 10px 0px 0px;
 }
