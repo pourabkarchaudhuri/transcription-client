@@ -384,6 +384,13 @@ strong {
   margin: 0px 10px 0px 0px;
 }
 
+.fixed-above-mic {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translate(-42%, -50%);
+}
+
 .fixed-row-bottom {
   position: absolute;
   bottom: 10%;
