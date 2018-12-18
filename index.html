@@ -226,7 +226,7 @@
                     if (e.result.reason === SpeechSDK.ResultReason.NoMatch) {
                         var noMatchDetail = SpeechSDK.NoMatchDetails.fromResult(e.result);
                     } else {
-                        window.console.log(e.result.text)
+                        window.console.log("Complete : ", e.result.text)
                     }
 
                     lastRecognized += e.result.text + "\r\n";

@@ -368,6 +368,7 @@ button {
   margin-top: 5px;
   border-radius: 15px;
   padding: 3px 10px;
+  user-select:none;
 }
 
 .status-dot {
