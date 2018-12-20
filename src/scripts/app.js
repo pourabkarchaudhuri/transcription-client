@@ -12,18 +12,21 @@ function handshake() {
         msg.innerHTML = "<strong>DISCONNECTED</strong><div id=\"status-msg-dot\" class=\"status-dot\" align=\"right\"></div>";
         var msg_dot = document.getElementById("status-msg-dot");
         msg_dot.style.backgroundColor = "rgb(217,83,79)";
+        msg_dot.style.boxShadow = "0 0 10px rgba(249, 0, 0, 0.8)";
     });
     socket.on('connect_error', function (err) {
         console.log("Connection Failed" + err);
         msg.innerHTML = "<strong>DISCONNECTED</strong><div id=\"status-msg-dot\" class=\"status-dot\" align=\"right\"></div>";
         var msg_dot = document.getElementById("status-msg-dot");
         msg_dot.style.backgroundColor = "rgb(217,83,79)";
+        msg_dot.style.boxShadow = "0 0 10px rgba(249, 0, 0, 0.8)";
     });
     socket.on('connect', function () {
         console.log("Connected");
         msg.innerHTML = "<strong>CONNECTED</strong><div id=\"status-msg-dot\" class=\"status-dot\" align=\"right\"></div>";
         var msg_dot = document.getElementById("status-msg-dot");
         msg_dot.style.backgroundColor = "rgb(107,214,225)";
+        msg_dot.style.boxShadow = "0 0 10px rgba(255, 255, 255, 0.8)";
     });
 };
 
@@ -49,4 +52,8 @@ function getConfig() {
             console.log(response);
         }
     })
+}
+
+function mailSender(emailId, titleText, transcript) {
+    console.log("Email: " + emailId + "\nTitle: " + titleText + "\nTranscript: " + transcript);
 }
