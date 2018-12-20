@@ -54,6 +54,19 @@ function getConfig() {
     })
 }
 
+
 function mailSender(emailId, titleText, transcript) {
-    console.log("Email: " + emailId + "\nTitle: " + titleText + "\nTranscript: " + transcript);
+    // console.log("Email: " + emailId + "\nTitle: " + titleText + "\nTranscript: " + transcript);
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/mail",
+        async: false,
+        data: { to: emailId,
+                title: titleText,
+                payload: transcript
+            },
+        success: function (response) {
+            console.log(response);
+        }
+    })
 }
