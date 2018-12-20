@@ -27,11 +27,12 @@ function handshake() {
     });
 };
 
-function call(val) {
-    console.log("Calling backend with :::::" + val)
+function call(val, flag) {
+    console.log("Calling backend with :::::" + val, flag)
     socket.emit('chat', {
         message: val,
-        handle: "transcriber"
+        handle: "transcriber",
+        flag: flag
     })
     message.value = "";
 }

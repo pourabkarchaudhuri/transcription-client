@@ -213,7 +213,7 @@
                     phraseDiv.innerHTML = lastRecognized + e.result.text;
                     window.console.log(e.result.text)
                     //AJAX call
-                    call(e.result.text)
+                    call(e.result.text, 0)
                 };
 
                 // The event recognized signals that a final recognition result is received.
@@ -227,6 +227,7 @@
                         var noMatchDetail = SpeechSDK.NoMatchDetails.fromResult(e.result);
                     } else {
                         window.console.log("Complete : ", e.result.text)
+                        call(e.result.text, 1)
                     }
 
                     lastRecognized += e.result.text + "\r\n";
