@@ -40,8 +40,7 @@
     <div class="container-fluid" id="content">
         <div class="row panel panel-default">
             <div class="jumbotron col panel-body" -->
-                <textarea disabled id="phraseDiv" class="textarea-style text_box transparent jumbotron col panel-body">
-                </textarea>
+                <textarea disabled id="phraseDiv" class="textarea-style text_box transparent jumbotron col panel-body"></textarea>
             </div>
         </div>
         <div class="row panel panel-default fixed-above-mic">
@@ -78,6 +77,56 @@
                         </div>
                     </button>
                 </span>
+            </div>
+        </div>
+    </div>
+    <div class="fab-container">
+        <span>
+            <button id="email-btn" type="button" class="btn btn-default btn-circle btn-xl" data-toggle="modal" data-target="#modal-email">
+                <i class="fa fa-envelope"></i>
+            </button>
+        </span>
+    </div>
+    <!-- Email Modal -->
+    <div class="modal fade" id="modal-email" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <h4 class="modal-title caps">
+                        Email
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="via_ue" class="row">
+                        <div class="col-xs-12">
+                            <form class="form-inline" id="signinform" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" id="id_email" placeholder="Email ID" type="text" name="email" tabindex="1" value="" required>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <input class="form-control" id="id_title" placeholder="Title" type="text" tabindex="2" autocomplete="off" name="title" required>
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <span class="fixed-email-send-btn">
+                                            <button id="id_signin_submit" type="button" data-loading-text="<i class='fa fa-refresh fa-spin'></i>" class="btn btn-primary">
+                                                <i class="fa fa-paper-plane"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-8">
+                                        <label id="error-msg">Invalid Input</label>  
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -147,6 +196,27 @@
         }
     </script>
 
+    <script>
+        // For comparing String using the wildcard characters in javascript.
+        function wildCompare(string, search) {
+            var prevIndex = -1,
+                array = search.split('*'), // Split the search string up in sections.
+                result = true;
+            for (var i = 0; i < array.length && result; i++) { // For each search section
+                var index = string.indexOf(array[i]); // Find the location of the current search section
+                if (index == -1 || index < prevIndex) { // If the section isn't found, or it's placed before the previous section...
+                    return false;
+                }
+            }
+            return result;
+        }
+
+        // For checking empty String.
+        function isEmpty(string) {
+            string
+        }
+    </script>
+
     <!-- Browser Hooks -->
     <script>
         var phraseDiv;
@@ -159,6 +229,7 @@
         var sdkStartContinousRecognitionBtn, sdkStopContinousRecognitionBtn;
         var audioFile, audioFileValid;
         var soundContext = undefined;
+        var emailSendBtn, errorLabel;
 
         try {
             soundContext = new AudioContext();
@@ -176,6 +247,8 @@
             formatOptions = document.getElementById("formatOptions");
             inputSource = document.getElementById("inputSource");
             filePicker = document.getElementById('filePicker');
+            emailSendBtn = document.getElementById('id_signin_submit');
+            errorLabel = document.getElementById('error-msg');
 
             // Starts continuous voice recognition. Recognition will continue until there is ~20 seconds of silence or ~10 minutes of speech.
             sdkStartContinousRecognitionBtn.addEventListener("click", function () {
@@ -292,6 +365,42 @@
                 sdkStartContinousRecognitionBtn.style.visibility = "visible";
                 sdkStopContinousRecognitionBtn.disabled = true;
                 sdkStopContinousRecognitionBtn.style.visibility = "hidden";
+            });
+
+            // Email Send Button onclick function.
+            emailSendBtn.addEventListener("click", function () {
+                var emailId = document.getElementById("id_email").value;
+                var titleText = document.getElementById("id_title").value;
+                var transcript = phraseDiv.value;
+                var errMsg = "Email Error: ";
+                var isFlawed = false;
+
+                if (!wildCompare(emailId, "*@*.com")) {
+                    errMsg += "Invalid Email ID";
+                    isFlawed = true;
+                } else {
+                    if (titleText === "") {
+                        errMsg += "Empty Title";
+                        isFlawed = true;
+                    } else {
+                        if (transcript === "") {
+                            errMsg += "Empty Transcript";
+                            isFlawed = true;
+                        } else  {
+                            mailSender(emailId, titleText, transcript);
+                            console.log("Transcription Successfully Emailed.");
+                        }
+                    }
+
+                }
+
+                if (isFlawed) {
+                    console.log(errMsg);
+                    errorLabel.style.visibility = "visible";
+                    errorLabel.innerHTML = errMsg;
+                } else {
+                    errorLabel.style.visibility = "hidden";
+                }
             });
 
             Initialize(function (speechSdk) {
