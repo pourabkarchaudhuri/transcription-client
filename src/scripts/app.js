@@ -3,7 +3,7 @@ console.log("Loading Scripts...");
 
 function handshake() {
     console.log("Handshaking...");
-    socket = io.connect('http://ec2-13-232-119-51.ap-south-1.compute.amazonaws.com:3000');
+    socket = io.connect('http://ec2-54-166-10-111.compute-1.amazonaws.com:3000');
 
     // Handling Errors, Connection Failures, etc.
     var msg = document.getElementById("status-msg");
@@ -57,6 +57,7 @@ function getConfig() {
 
 function mailSender(emailId, titleText, transcript) {
     // console.log("Email: " + emailId + "\nTitle: " + titleText + "\nTranscript: " + transcript);
+    var successMsg = document.getElementById('error-msg');
     $.ajax({
         type: "POST",
         url: "http://localhost:3000/mail",
@@ -67,6 +68,9 @@ function mailSender(emailId, titleText, transcript) {
             },
         success: function (response) {
             console.log(response);
+            successMsg.style.visibility = "visible";
+            successMsg.style.color = "rgb(75, 181, 67)";
+            successMsg.innerHTML = response.message;
         }
-    })
+    });
 }

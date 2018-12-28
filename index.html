@@ -210,11 +210,6 @@
             }
             return result;
         }
-
-        // For checking empty String.
-        function isEmpty(string) {
-            string
-        }
     </script>
 
     <!-- Browser Hooks -->
@@ -229,6 +224,7 @@
         var sdkStartContinousRecognitionBtn, sdkStopContinousRecognitionBtn;
         var audioFile, audioFileValid;
         var soundContext = undefined;
+        var emailBtn;
         var emailSendBtn, errorLabel;
 
         try {
@@ -243,10 +239,11 @@
             sdkStopContinousRecognitionBtn = document.getElementById("speechsdkStopContinuousRecognition");
             phraseDiv = document.getElementById("phraseDiv");
             key = document.createElement;
-            key.value = "dffe370190ab42d3ab8fd78a4a7f8e58";
+            key.value = "d4f3c6fbe09045d983861f6a3749752d";
             formatOptions = document.getElementById("formatOptions");
             inputSource = document.getElementById("inputSource");
             filePicker = document.getElementById('filePicker');
+            emailBtn = document.getElementById('email-btn');
             emailSendBtn = document.getElementById('id_signin_submit');
             errorLabel = document.getElementById('error-msg');
 
@@ -265,12 +262,12 @@
                     speechConfig = SpeechSDK.SpeechConfig.fromAuthorizationToken(authorizationToken,
                         "southeastasia");
                 } else {
-                    if (key.value === "" || key.value === "5e98bde5b86f4f09bb4ab9db2535d61") {
+                    if (key.value === "" || key.value === "COGNITIVE_SPEECH_KEY") {
                         alert("Please enter your Cognitive Services Speech subscription key!");
                         return;
                     }
                     speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
-                        "dffe370190ab42d3ab8fd78a4a7f8e58", "southeastasia");
+                        "d4f3c6fbe09045d983861f6a3749752d", "westus");
                 }
 
                 speechConfig.speechRecognitionLanguage = "en-US";
@@ -368,6 +365,16 @@
                 sdkStopContinousRecognitionBtn.style.visibility = "hidden";
             });
 
+            // Email Button onclick event.
+            emailBtn.addEventListener('click', function () {
+                let emailIdText = document.getElementById('id_email');
+                let titleText = document.getElementById('id_title');
+                let errorText = document.getElementById('error-msg');
+                emailIdText.value = "";
+                titleText.value = "";
+                errorText.style.visibility = "hidden";
+            });
+
             // Email Send Button onclick function.
             emailSendBtn.addEventListener("click", function () {
                 var emailId = document.getElementById("id_email").value;
@@ -387,12 +394,8 @@
                         if (transcript === "") {
                             errMsg += "Empty Transcript";
                             isFlawed = true;
-                        } else  {
-                            mailSender(emailId, titleText, transcript);
-                            console.log("Transcription Successfully Emailed.");
                         }
                     }
-
                 }
 
                 if (isFlawed) {
@@ -400,7 +403,11 @@
                     errorLabel.style.visibility = "visible";
                     errorLabel.innerHTML = errMsg;
                 } else {
-                    errorLabel.style.visibility = "hidden";
+                    mailSender(emailId, titleText, transcript);
+                    console.log("Transcription Successfully Emailed.");
+                    setTimeout(function () {
+                        $('modal-email').modal('hide');
+                    }, 1000);
                 }
             });
 
