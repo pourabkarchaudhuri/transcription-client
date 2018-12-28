@@ -23,6 +23,7 @@
     <script>
         $(document).ready(function () {
             getConfig();
+            // mockData();
             handshake();
         });
     </script>
@@ -243,7 +244,7 @@
             sdkStopContinousRecognitionBtn = document.getElementById("speechsdkStopContinuousRecognition");
             phraseDiv = document.getElementById("phraseDiv");
             key = document.createElement;
-            key.value = "dffe370190ab42d3ab8fd78a4a7f8e58";
+            key.value = "d4f3c6fbe09045d983861f6a3749752d";
             formatOptions = document.getElementById("formatOptions");
             inputSource = document.getElementById("inputSource");
             filePicker = document.getElementById('filePicker');
@@ -270,7 +271,7 @@
                         return;
                     }
                     speechConfig = SpeechSDK.SpeechConfig.fromSubscription(
-                        "dffe370190ab42d3ab8fd78a4a7f8e58", "southeastasia");
+                        "d4f3c6fbe09045d983861f6a3749752d", "westus");
                 }
 
                 speechConfig.speechRecognitionLanguage = "en-US";

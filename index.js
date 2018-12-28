@@ -72,29 +72,7 @@ app.post('/mail', function (req, res) {
 
 
 })
-// app.get('/visualizer', function(req, res) {
-//     res.sendFile(__dirname + '/home.html');
-// });
 
-// app.get('/listen', function(req, res) {
-//     res.send(global.result)
-//     // fs.createReadStream('./transcript.txt')
-//     // .pipe(res)
-//     // .on('error',console.error);
-// });
-
-// app.post('/intermediate', function(req, res) {
-//     // console.log("/intermediate : called!"  + JSON.stringify(req.body));
-//     // fs.appendFile("transcript.txt", req.body.payload, function(err) {
-//     //     if(err) {
-//     //         return console.log(err);
-//     //     }
-    
-//     //     // console.log("The file was updated!");
-//     // }); 
-//     global.result = req.body.payload;
-//     res.send("response|" + req.body.payload)
-// });
 //Route for GET
 
 //Route for file uploads

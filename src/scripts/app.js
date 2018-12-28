@@ -3,7 +3,7 @@ console.log("Loading Scripts...");
 
 function handshake() {
     console.log("Handshaking...");
-    socket = io.connect('http://ec2-13-232-119-51.ap-south-1.compute.amazonaws.com:3000');
+    socket = io.connect('http://ec2-54-166-10-111.compute-1.amazonaws.com:3000');
 
     // Handling Errors, Connection Failures, etc.
     var msg = document.getElementById("status-msg");
@@ -69,4 +69,28 @@ function mailSender(emailId, titleText, transcript) {
             console.log(response);
         }
     })
+}
+
+function mockData(){
+    console.log('Sending Mock Data');
+
+    datagen();
+
+    
+}
+//var number = Math.round(Math.random() * 0xFFFFFF);
+
+
+function datagen(){
+    console.log('Pushing...');
+    //TODO math random function
+    let val = Math.round(Math.random() * 0xFFFFFF);
+    socket.emit('chat', {
+        message: val,
+        handle: "transcriber",
+        flag: flag
+    })
+    message.value = "";
+    setTimeout(datagen,500);
+
 }
