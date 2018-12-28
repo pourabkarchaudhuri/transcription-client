@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 you see if everything works fine
+=======
+testing data
+>>>>>>> aa2822ab3f783624d5bb277433060386a0600cf0

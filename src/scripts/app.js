@@ -57,6 +57,7 @@ function getConfig() {
 
 function mailSender(emailId, titleText, transcript) {
     // console.log("Email: " + emailId + "\nTitle: " + titleText + "\nTranscript: " + transcript);
+    var successMsg = document.getElementById('error-msg');
     $.ajax({
         type: "POST",
         url: "http://localhost:3000/mail",
@@ -67,8 +68,11 @@ function mailSender(emailId, titleText, transcript) {
             },
         success: function (response) {
             console.log(response);
+            successMsg.style.visibility = "visible";
+            successMsg.style.color = "rgb(75, 181, 67)";
+            successMsg.innerHTML = response.message;
         }
-    })
+    });
 }
 
 function mockData(){
