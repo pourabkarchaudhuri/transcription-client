@@ -17,11 +17,11 @@ const transporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-                   user: 'htlp002@gmail.com',
-                   pass: 'Hexaware321'
+                   user: 'EMAIL',
+                   pass: 'PASS'
           }
 });
-const sender = '"NoReply_InnovationLab" <htlp002@gmail.com>';
+const sender = '"NoReply_InnovationLab" <EMAIL>';
 
 
 module.exports = {
